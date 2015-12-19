@@ -477,9 +477,12 @@ void GDCMImageIO::InternalReadImageInformation()
             break;
           }
         }
+      if( sp.size() == 2)
+      {
         spacing[0] = sp[0];
         spacing[1] = sp[1];
         spacing[2] = 1.0; // punt?
+      }
       }
       break;
     default:
