@@ -108,7 +108,11 @@ if(NOT ITK_NO_IO_FACTORY_REGISTER_MANAGER)
   unset(LIST_OF_FACTORY_NAMES)
 
   #-------------------
+  if(NOT NO_DIRECTORY_SCOPED_ITK_COMPILE_DEFINITION)
+    # We add a target scoped compile definition in MITK manually, to avoid leaking
+    # the definition to other targets in the same directory or sub-directory.
   set_property(DIRECTORY APPEND PROPERTY COMPILE_DEFINITIONS ITK_IO_FACTORY_REGISTER_MANAGER)
+  endif()
   include_directories(BEFORE ${CMAKE_CURRENT_BINARY_DIR}/ITKIOFactoryRegistration)
 
 endif()
